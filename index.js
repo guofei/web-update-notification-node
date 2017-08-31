@@ -1,12 +1,17 @@
 const puppeteer = require('puppeteer');
 
-(async() => {
-
+const makeRequest = async() => {
   const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto('https://www.yahoo.co.jp/');
-  const text = await page.plainText();
-  console.log(text);
+  try {
+    const page = await browser.newPage();
+    await page.goto('https://www.yahoo.co.jp/');
+    const text = await page.plainText();
+    console.log(text);
+  } catch(err) {
+    console.log(err);
+  } finally {
+    browser.close();
+  }
+};
 
-  browser.close();
-})();
+makeRequest();
