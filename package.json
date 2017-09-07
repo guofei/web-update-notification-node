@@ -1,11 +1,19 @@
 {
   "name": "web-notifications-node",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "repository": {},
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.4",
     "puppeteer": "^0.10.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
   }
 }
