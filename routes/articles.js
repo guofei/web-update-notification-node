@@ -1,15 +1,18 @@
 const express = require('express');
-const { crawler } = require('../lib/crawler');
+const { createBrowser, render } = require('../lib/crawler');
+
+let browser = null;
+createBrowser().then((b) => { browser = b; });
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
   const { url } = req.query;
-  if (!url) {
+  if (!url || !browser) {
     res.status(400).json({ message: 'invalid' });
     return;
   }
-  crawler(url).then((data) => {
+  render(browser, url).then((data) => {
     res.json(data);
   }).catch(() => {
     res.status(400).json({ message: 'Problems parsing Article' });

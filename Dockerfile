@@ -5,8 +5,6 @@ RUN apt-get update && apt-get install -yq gconf-service libasound2 libatk1.0-0 l
 # Create app directory
 WORKDIR /usr/src/app
 
-# ENV NODE_ENV production
-
 # Install app dependencies
 COPY package.json package-lock.json ./
 
@@ -16,4 +14,7 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
+
+ENV NODE_ENV production
+
 CMD [ "npm", "start" ]
