@@ -9,11 +9,13 @@ router.get('/', (req, res) => {
     res.status(400).json({ message: 'invalid' });
     return;
   }
-  render(url).then((data) => {
-    res.json(data);
-  }).catch((e) => {
-    res.status(400).json(e.message);
-  });
+  render(url)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((e) => {
+      res.status(400).json(e.message);
+    });
 });
 
 module.exports = router;
