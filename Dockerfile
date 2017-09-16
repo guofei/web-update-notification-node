@@ -13,6 +13,8 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+RUN mkdir -p /usr/src/app/tmp/logs
+
 EXPOSE 3000
 
 ENV NODE_ENV production
