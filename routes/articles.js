@@ -12,7 +12,12 @@ router.get('/', (req, res) => {
   render(url).then((data) => {
     res.json(data);
   }).catch((e) => {
-    res.status(400).json(e.message);
+    const { message = '' } = e;
+    if (/not opened/i.test(message) || /crash/i.test(message)) {
+      res.redirect(`${process.env.BACKUP_HOST}/api/articles?url=${url}`);
+    } else {
+      res.status(422).json(e.message);
+    }
   });
 });
 
