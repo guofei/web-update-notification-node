@@ -1,5 +1,6 @@
 const express = require('express');
 const { render } = require('../lib/crawler');
+const { logger } = require('../lib/logger');
 
 const router = express.Router();
 
@@ -13,10 +14,12 @@ router.get('/', (req, res) => {
     res.json(data);
   }).catch((e) => {
     const { message = '' } = e;
-    if (/not opened/i.test(message) || /crash/i.test(message)) {
+    logger.info(message);
+    const backup = process.env.BACKUP_HOST;
+    if (backup) {
       res.redirect(`${process.env.BACKUP_HOST}/api/articles?url=${url}`);
     } else {
-      res.status(422).json(e.message);
+      res.status(422).json(message);
     }
   });
 });

@@ -22,4 +22,3 @@ EXPOSE 3000
 ENV NODE_ENV production
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "npm", "start"]
-# CMD [ "npm", "start" ]
