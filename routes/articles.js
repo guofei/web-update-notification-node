@@ -15,12 +15,7 @@ router.get('/', (req, res) => {
   }).catch((e) => {
     const { message = '' } = e;
     logger.info(message);
-    const backup = process.env.BACKUP_HOST;
-    if (backup) {
-      res.redirect(`${process.env.BACKUP_HOST}/api/articles?url=${url}`);
-    } else {
-      res.status(422).json(message);
-    }
+    res.status(422).json(message);
   });
 });
 
