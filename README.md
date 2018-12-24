@@ -16,3 +16,10 @@ docker run --restart unless-stopped -d -p 8181:3000 --log-opt max-size=100m --lo
 
 #### Logs path
 /var/log/webnofity
+
+### Install with k8s
+```
+kubectl apply -f api-deployment.yml
+kubectl apply -f api-service.yml
+kubectl port-forward svc/api-service 3000:3000
+```
