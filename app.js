@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const texts = require('./routes/texts');
+const health = require('./routes/health');
 
 const app = express();
 app.use(compression());
@@ -17,5 +18,6 @@ app.use(cookieParser());
 
 app.use('/', index);
 app.use('/api/texts', texts);
+app.use('/healthz', health);
 
 module.exports = app;
