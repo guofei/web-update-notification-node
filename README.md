@@ -13,9 +13,6 @@ docker run --restart unless-stopped -d -p 8181:3000 guofei/web-update-notificati
 docker run --restart unless-stopped -d -p 8181:3000 --log-opt max-size=100m --log-opt max-file=10 -v /hostpath/logs:/usr/src/app/tmp/logs guofei/web-update-notification-node-api
 ```
 
-#### Logs path
-/var/log/webnofity
-
 ### Install with k8s
 ```
 kubectl apply -f api.yml
